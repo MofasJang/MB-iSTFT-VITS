@@ -78,7 +78,7 @@ class PQMF(torch.nn.Module):
         analysis_filter = torch.from_numpy(h_analysis).float().unsqueeze(1).cuda(device)
         synthesis_filter = torch.from_numpy(h_synthesis).float().unsqueeze(0).cuda(device)
 
-        # register coefficients as beffer
+        # register coefficients as buffer
         self.register_buffer("analysis_filter", analysis_filter)
         self.register_buffer("synthesis_filter", synthesis_filter)
 

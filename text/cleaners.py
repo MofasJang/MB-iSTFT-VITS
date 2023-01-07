@@ -49,9 +49,6 @@ def expand_abbreviations(text):
   return text
 
 
-def expand_numbers(text):
-  return normalize_numbers(text)
-
 
 def lowercase(text):
   return text.lower()
@@ -79,6 +76,12 @@ def transliteration_cleaners(text):
   text = collapse_whitespace(text)
   return text
 
+def chinese_cleaners(text):
+  from text.mandarin import chinese_to_ipa
+  text = chinese_to_ipa(text)
+  text = re.sub(r'\s+$', '', text)
+  text = re.sub(r'([^\.,!\?\-…~])$', r'\1.', text)
+  return text
 
 def english_cleaners(text):
   '''Pipeline for English text, including abbreviation expansion.'''
@@ -98,3 +101,45 @@ def english_cleaners2(text):
   phonemes = phonemize(text, language='en-us', backend='espeak', strip=True, preserve_punctuation=True, with_stress=True)
   phonemes = collapse_whitespace(phonemes)
   return phonemes
+
+def english_cleaners3(text):
+  from text.english import english_to_ipa2
+  text = english_to_ipa2(text)
+  text = re.sub(r'\s+$', '', text)
+  text = re.sub(r'([^\.,!\?\-…~])$', r'\1.', text)
+  return text
+
+def engnese_cleaners(text):
+  from text.mandarin import chinese_to_ipa
+  from text.english import english_to_ipa2
+  text = re.sub(r'\[ZH\](.*?)\[ZH\]',
+                lambda x: chinese_to_ipa(x.group(1))+' ', text)
+  text = re.sub(r'\[EN\](.*?)\[EN\]',
+                lambda x: english_to_ipa2(x.group(1))+' ', text)
+  text = re.sub(r'\s+$', '', text)
+  text = re.sub(r'([^\.,!\?\-…~])$', r'\1.', text)
+  return text
+
+def engnese_cleaners2(text):
+  from text.mandarin import chinese_to_ipa
+  # from text.english import english_to_ipa2
+  text = re.sub(r'\[ZH\](.*?)\[ZH\]',
+                lambda x: chinese_to_ipa(x.group(1))+' ', text)
+  text = re.sub(r'\[EN\](.*?)\[EN\]',
+                lambda x: english_cleaners2(x.group(1))+' ', text)
+  text = re.sub(r'\s+$', '', text)
+  text = re.sub(r'([^\.,!\?\-…~])$', r'\1.', text)
+  return text
+
+def japanese_to_ipa(text):
+  from text.japanese import japanese_to_ipa2
+  text=japanese_to_ipa2(text)
+  text = re.sub(r'([^\.,!\?\-…~\\])$', r'\1.', text)
+  return text
+
+if __name__=="__main__":
+  print("转换前：你好啊我的朋友hellow my friend")
+  # print("转换后："+english_cleaners2("你好啊我的朋友hellow my friend"))
+  print("转换后："+engnese_cleaners2("[ZH]你好啊我的朋友[ZH][EN]hellow my friend[EN]"))
+
+  
