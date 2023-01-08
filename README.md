@@ -38,7 +38,7 @@ python setup.py build_ext --inplace
 ### 3. Training
 In the case of MB-iSTFT-VITS training, run the following script
 ```sh
-python train_latest.py -c configs/ljs_mb_istft_vits.json -m ljs_mb_istft_vits
+python train_latest.py -c configs/ljs_baker_mini_mb_istft_vits.json -m ljs_baker_mini_mb_istft_vits
 
 ```
 
