@@ -105,6 +105,10 @@ In the case of MB-iSTFT-VITS training, run the following script
 python train_latest.py -c configs/ljs_baker_mini_mb_istft_vits.json -m ljs_baker_mini_mb_istft_vits
 
 ```
+multispeaker:
+```sh
+python train_ms.py -c configs/ljs_baker_ms_mini_mb_istft_vits.json -m ljs_baker_ms_mini_mb_istft_vits
+```
 
 After the training, you can check inference audio using [inference.ipynb](inference.ipynb)
 
