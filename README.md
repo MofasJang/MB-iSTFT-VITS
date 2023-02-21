@@ -8,6 +8,10 @@
 
 目前完成了对中英文语音集的收集工作，由于其他语种语料库并不完善，因此后续可能需要在视频、音频网站上自行收集并标注语音集。收集的数据集包括中文多说话人85小时语音集[Aishell-3](http://www.aishelltech.com/aishell_3)，英文多说话人585小时语音集[LibriTTS](https://www.openslr.org/60/)，以及用于说话人编码器预训练的英文109说话人语音集[VCTK](https://datashare.is.ed.ac.uk/handle/10283/2651)和中文2000说话人语音集[CN-Celeb2](http://www.openslr.org/82/)，还有用于语言编码器预训练的700种语言的多语种语音集[CMU](http://festvox.org/cmu_wilderness/)。
 
+其他数据集
+- [日语单人语音集]()
+- [俄语单人语音集](https://doc-04-c0-docs.googleusercontent.com/docs/securesc/jebruk45dpas4pnah0rkdjgqa8d598nv/kkvdlfv114jeafmg8ianvegtmg31a2sm/1664248500000/10824087994591713122/08972607164013668951/1Y6vv--gcDx-S8DieSGaD7WnB86kZLgc_?e=download&ax=ALW9-sAZrwJdz8HVDMak0lkNpPFhahfeu6f8RlWI_0YrUrZdxaFa-911ocfhdjpQXRqIqoxCK83puO4JYSIW7IWAs4u25E1cmFO87tx50Dgs7fZY5yyLsYvAlWkLgyqzqVSO-sgRylLZcyQJx6xTGbvUmxY09YTZN9eTJJGBk75kdp0XIW2K2Ay3qkYCAk_fxlaLaWNZlEBw5pF_z-XySuu_vItsOJfFRBtmEM8mY3Q2G2vrItAuCLTEbmO3TwXDfOFFD9R_F7l4laEPwtikxNe1tp3i9c_B4aGSb282EgAxzYA4pHaPi3dWAc-tDPupeeZfZ2k_FZC4uZldixWJhn3E6jnqcdNo7er8poAz52GBTvhlxCndlxRI2f07zJr7tnxCTj2Ovo823FHwzVL4gcc6TBH7bKo6dwEG469LMI4ErlNtDnfRLjyxwTdgIf0fSlyIdMZW8mEiAg3X5In2tSXM40Xfw3XFfIGZIckQXNovSwebUa9jUXCwZ-xQWunhPVbrsREBm1TuySDMmV72Uwk6HVn4Ww7x3J2pLz3FKdKGVbPISKKGhN9ebalqGbVP0caRV3vP2vwknQHzBm6XjUupgiObPuvJ6OCyLOpH6fIti08BYZk20GKuHx5Dj6NCOFwsPg268BcG3NhAHSXPs3PL6rHREPxOxLb68dA3ULglamn9KgEzyh4U88qAQ7_LNipXLSGcP_FAb18Rzw&uuid=cd09e3e5-3177-4a3c-94e1-e830836151ec&authuser=0)
+
 ### 2.模型结构
 
 多语种个性化TTS模型结构如下图所示：
