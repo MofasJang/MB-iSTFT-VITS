@@ -236,16 +236,23 @@ _bopomofo_to_ipa2 = [(re.compile('%s' % x[0]), x[1]) for x in [
     ('—', '-')
 ]]
 
+c_basic='零一二三四五六七八九'
 
 def number_to_chinese(text):
-    numbers = re.findall(r'\d+(?:\.?\d+)?', text)
+    numbers = re.findall(r'\d+(?:\.?\d+)?%?年?', text)
     for number in numbers:
-        text = text.replace(number, cn2an.an2cn(number), 1)
+        if number[-1]=="年":
+            year=[c_basic[int(i)] for i in number[:-1]]
+            text = text.replace(number, "".join(year)+"年")
+        elif number[-1]=="%":
+            text = text.replace(number, "百分之"+cn2an.an2cn(number[:-1]), 1)
+        else:
+            text = text.replace(number, cn2an.an2cn(number), 1)
     return text
 
 
 def chinese_to_bopomofo(text):
-    text = text.replace('、', '，').replace('；', '，').replace('：', '，')
+    text = text.replace('、', '，').replace('；', '，').replace('：', '，').replace('《', '').replace('》', '')
     words = jieba.lcut(text, cut_all=False)
     text = ''
     for word in words:
@@ -306,7 +313,7 @@ def chinese_to_lazy_ipa(text):
 
 
 def chinese_to_ipa(text):
-    text = number_to_chinese(text)
+    text = number_to_chinese(text) 
     text = chinese_to_bopomofo(text)
     text = latin_to_bopomofo(text)
     text = bopomofo_to_ipa(text)

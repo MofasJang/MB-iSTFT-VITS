@@ -78,6 +78,7 @@ def transliteration_cleaners(text):
 
 def chinese_cleaners(text):
   from text.mandarin import chinese_to_ipa
+  # from mandarin import chinese_to_ipa
   text = chinese_to_ipa(text)
   text = re.sub(r'\s+$', '', text)
   text = re.sub(r'([^\.,!\?\-…~])$', r'\1.', text)
@@ -138,8 +139,6 @@ def japanese_to_ipa(text):
   return text
 
 if __name__=="__main__":
-  print("转换前：你好啊我的朋友hellow my friend")
-  # print("转换后："+english_cleaners2("你好啊我的朋友hellow my friend"))
-  print("转换后："+engnese_cleaners2("[ZH]你好啊我的朋友[ZH][EN]hellow my friend[EN]"))
+  print(chinese_cleaners("2015年，中国和阿根廷是好朋友、好伙伴。50%，也是中阿友好合作年。"))
 
   
