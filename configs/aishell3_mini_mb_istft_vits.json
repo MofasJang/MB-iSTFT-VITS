@@ -7,7 +7,7 @@
     "learning_rate": 2e-4,
     "betas": [0.8, 0.99],
     "eps": 1e-9,
-    "batch_size": 1,
+    "batch_size": 12,
     "fp16_run": false,
     "lr_decay": 0.999875,
     "segment_size": 8192,
@@ -21,9 +21,9 @@
     "window": "hann_window"  
   },
   "data": {
-    "training_files":"filelists/baker_ljs_ms_train1.txt",
-    "validation_files":"filelists/baker_ljs_ms_val1.txt",
-    "text_cleaners":["engnese_cleaners2"],
+    "training_files":"filelists/aishell3_train.txt.cleaned",
+    "validation_files":"filelists/aishell3_val.txt.cleaned",
+    "text_cleaners":["chinese_cleaners"],
     "max_wav_value": 32768.0,
     "sampling_rate": 22050,
     "filter_length": 1024,
@@ -33,7 +33,7 @@
     "mel_fmin": 0.0,
     "mel_fmax": null,
     "add_blank": true,
-    "n_speakers": 2,
+    "n_speakers": 174,
     "cleaned_text": true
   },
   "model": {
@@ -58,7 +58,8 @@
     "upsample_kernel_sizes": [16,16],
     "n_layers_q": 3,
     "use_spectral_norm": false,
-    "use_sdp": false
+    "use_sdp": false,
+    "gin_channels": 256
   }
 
 }

@@ -87,12 +87,26 @@ We also provide the [pretrained models](https://drive.google.com/drive/folders/1
     1. You may need to install espeak first: `apt-get install espeak`
 0. Download datasets
     1. Download and extract the [LJ Speech dataset](https://keithito.com/LJ-Speech-Dataset/), then rename or create a link to the dataset folder: `ln -s /path/to/LJSpeech-1.1/wavs DUMMY1`
-0. Build Monotonic Alignment Search and run preprocessing if you use your own datasets.
+0. Build Monotonic Alignment Search
 ```sh
 # Cython-version Monotonoic Alignment Search
 cd monotonic_align
 mkdir monotonic_align
 python setup.py build_ext --inplace
+```
+
+5. Run preprocessing if you use your own datasets.
+
+```sh
+# Preprocessing (g2p) for your own datasets. Preprocessed phonemes for LJ Speech and VCTK have been already provided.
+# python preprocess.py --text_index 1 --filelists filelists/ljs_audio_text_train_filelist.txt filelists/ljs_audio_text_val_filelist.txt filelists/ljs_audio_text_test_filelist.txt 
+# python preprocess.py --text_index 2 --filelists filelists/vctk_audio_sid_text_train_filelist.txt filelists/vctk_audio_sid_text_val_filelist.txt filelists/vctk_audio_sid_text_test_filelist.txt
+
+python preprocess.py --out_extension cleaned1 --text_index 1 --filelists filelists/baker_all.txt --text_cleaners chinese_cleaners
+
+python preprocess.py --out_extension cleaned1 --text_index 1 --filelists filelists/ljs_audio_text_train_filelist.txt filelists/ljs_audio_text_val_filelist.txt --text_cleaners english_cleaners3
+
+python preprocess.py --out_extension cleaned --text_index 2 --filelists filelists/news_train.txt filelists/news_val.txt --text_cleaners chinese_cleaners
 ```
 
 ### 2. Setting json file in [configs](configs)
