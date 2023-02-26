@@ -19,11 +19,11 @@ def change_sample_rate(path,new_dir_path,new_sample_rate = 8000):
  
 if __name__ == '__main__':
     #指定原音频文件夹路径
-    original_path = "./BAKER/"
+    original_path = "./AISHELL/"
     wav_list = os.listdir(original_path)
  
     #指定转换后的音频文件夹路径
-    new_dir_path = "./BAKER/"
+    new_dir_path = "./AISHELL/"
     os.makedirs(new_dir_path, exist_ok=True)
  
     #开始以对原音频文件夹内的音频进行采样率的批量转换

@@ -143,9 +143,11 @@ def load_filepaths_and_text(filename, split="|"):
 
 def get_hparams(init=True):
   parser = argparse.ArgumentParser()
-  parser.add_argument('-c', '--config', type=str, default="./configs/base.json",
+  # parser.add_argument('-c', '--config', type=str, default="./configs/ljs_baker_ms_mini_mb_istft_vits.json",
+  parser.add_argument('-c', '--config', type=str, default="./configs/news_mini_mb_istft_vits.json",
                       help='JSON file for configuration')
-  parser.add_argument('-m', '--model', type=str, required=True,
+  # parser.add_argument('-m', '--model', type=str, default="ljs_baker_ms_mini_mb_istft_vits",
+  parser.add_argument('-m', '--model', type=str, default="news_mini_mb_istft_vits",
                       help='Model name')
   
   args = parser.parse_args()

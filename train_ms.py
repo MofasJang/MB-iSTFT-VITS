@@ -62,8 +62,8 @@ def run(rank, n_gpus, hps):
     writer = SummaryWriter(log_dir=hps.model_dir)
     writer_eval = SummaryWriter(log_dir=os.path.join(hps.model_dir, "eval"))
 
-  # dist.init_process_group(backend='nccl', init_method='env://', world_size=n_gpus, rank=rank)
-  dist.init_process_group(backend='gloo', init_method='env://', world_size=n_gpus, rank=rank)
+  dist.init_process_group(backend='nccl', init_method='env://', world_size=n_gpus, rank=rank)
+  # dist.init_process_group(backend='gloo', init_method='env://', world_size=n_gpus, rank=rank)
   torch.manual_seed(hps.train.seed)
   torch.cuda.set_device(rank)
 
@@ -71,8 +71,8 @@ def run(rank, n_gpus, hps):
   train_sampler = DistributedBucketSampler(
       train_dataset,
       hps.train.batch_size,
-      [200,300,400,500,600,800,1000,1200,1300],
-      # [32,300,400,500,600,700,800,900,1000],
+      # [200,300,400,500,600,800,1000,1200,1300],
+      [32,300,400,500,600,700,800,900,1000],
       num_replicas=n_gpus,
       rank=rank,
       shuffle=True)
