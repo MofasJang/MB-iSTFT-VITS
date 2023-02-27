@@ -252,7 +252,7 @@ def number_to_chinese(text):
 
 
 def chinese_to_bopomofo(text):
-    text = text.replace('、', '，').replace('；', '，').replace('：', '，').replace('《', '').replace('》', '').replace('/', '').replace('“', '').replace('”', '')
+    text = text.replace('、', '，').replace('；', '，').replace('：', '，').replace('《', '').replace('》', '').replace('/', '').replace('“', '').replace('”', '').replace('(', '').replace(')', '')
     words = jieba.lcut(text, cut_all=False)
     text = ''
     for word in words:
